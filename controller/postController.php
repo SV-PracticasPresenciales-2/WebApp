@@ -1,6 +1,5 @@
 <?php
-require_once '../model/post.php';
-require_once '../controller/userController.php';
+require_once 'model/post.php';
 
 
 class postController
@@ -20,7 +19,6 @@ class postController
 
 }
 
- $userController = new userController();
 
 
 

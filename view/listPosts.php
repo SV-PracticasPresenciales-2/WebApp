@@ -1,7 +1,5 @@
 <?php
-
-include_once '../controller/postController.php';
-
+include("header.php");
 ?>
 <div class="container-sm text-center justify-content-center w-25 mt-5">
         <div class="row justify-content-center mb-1">
@@ -19,10 +17,13 @@ include_once '../controller/postController.php';
 
             <div class="row justify-content-center mb-1">
                 <div class="col">
-                    username:<?php echo $userController->getName($post['id'])["post_user"] ?></td>
+                    Username:<?php echo $post['post_user']?></td>
                 </div>
                 <div class="col">
                     Mensaje:<?php echo $post['message'] ?></td>
+                </div>
+                <div class="col">
+                    <a href="view/detailsUser.php?id=<?php echo $post['post_user']?>" class="btn btn-info" type="button">User Details</a>
                 </div>
             </div>
         </div>

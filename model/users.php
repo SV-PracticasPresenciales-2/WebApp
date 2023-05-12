@@ -12,7 +12,7 @@ class users
     private string $password;
     private int $phone_number;
 
-    private Date $register_date;
+    private string $register_date;
 
     private string $username;
 
@@ -25,11 +25,11 @@ class users
      * @param string $name
      * @param string $password
      * @param int $phone_number
-     * @param Date $register_date
+     * @param string $register_date
      * @param string $username
 
      */
-    public function __construct(int $id, bool $active, string $biography, string $name, string $password, int $phone_number, Date $register_date, string $username)
+    public function __construct(int $id, bool $active, string $biography, string $name, string $password, int $phone_number, string $register_date, string $username)
     {
         $this->id = $id;
         $this->active = $active;
@@ -142,6 +142,31 @@ class users
         }
     }
 
+    public function getUserDetails($id){
+        try {
+            $conexion = Conectar::Conexion();
+
+            if (gettype($conexion) == "string") {
+                return $conexion;
+            }
+
+            $sql = "SELECT * FROM USERS WHERE id = :id";
+            $respuesta = $conexion->prepare($sql);
+            $respuesta->execute(array(':id' => $id));
+            $respuesta = $respuesta->fetch(PDO::FETCH_ASSOC);
+            $conexion = null;
+
+            if ($respuesta) {
+                $user = new users($respuesta["id"],$respuesta["active"],$respuesta["biography"],$respuesta["name"],$respuesta["password"],$respuesta["phone_number"],$respuesta["register_date"],$respuesta["username"]);
+                return $user;
+            } else {
+                return $user = null;
+            }
+        } catch (PDOException $e) {
+            return Conectar::mensajes($e->getCode());
+        }
+    }
+
 
     /**
      * @param string $name
@@ -189,9 +214,9 @@ class users
     }
 
     /**
-     * @param Date $register_date
+     * @param string $register_date
      */
-    public function setRegisterDate(Date $register_date): void
+    public function setRegisterDate(string $register_date): void
     {
         $this->register_date = $register_date;
     }
