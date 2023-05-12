@@ -3,7 +3,7 @@
 require_once '../model/conexion/conexion.php';
 require_once 'sesion.php';
 
-class user
+class users
 {
     private int $id;
     private bool $active;
@@ -118,10 +118,30 @@ class user
  //   /**
  //    * @return string
 //     */
-    public function getName(): string
-    {
-        return $this->name;
+    public static function getName($id){
+        try {
+            $conexion = Conectar::Conexion();
+
+            if (gettype($conexion) == "string") {
+                return $conexion;
+            }
+
+            $sql = "SELECT username FROM USERS WHERE id = :id";
+            $respuesta = $conexion->prepare($sql);
+            $respuesta->execute(array(':id' => $id));
+            $respuesta = $respuesta->fetch(PDO::FETCH_ASSOC);
+            $conexion = null;
+
+            if ($respuesta) {
+                return $respuesta;
+            } else {
+                return null;
+            }
+        } catch (PDOException $e) {
+            return Conectar::mensajes($e->getCode());
+        }
     }
+
 
     /**
      * @param string $name
@@ -228,6 +248,8 @@ class user
         }
     }
 
+
+ /*
     public static function getName($id){
         try {
             $conexion = Conectar::Conexion();
@@ -254,7 +276,7 @@ class user
             return Conectar::mensajes($e->getCode());
         }
     }
-
+*/
     public static function cryptconmd5($password)
     {
         //Crea un salt

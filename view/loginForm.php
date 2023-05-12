@@ -1,5 +1,4 @@
 <?php
-include("header.php");
 if (isset($_GET["registro"])){
     require_once 'registro.php';
 }else{

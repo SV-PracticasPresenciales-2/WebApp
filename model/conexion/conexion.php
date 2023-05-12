@@ -13,7 +13,7 @@ class Conectar{
     public static function Conexion(){
         try{
             //Este archivo es requerido desde dos ubicaciones. Es por eso que se realizan dos comprobaciones para verificar si el archivo basededatos.php existe
-            if(file_exists("../conexion/bd.php") || file_exists("bd.php")){
+            if(file_exists("../model/conexion/bd.php") || file_exists("model/conexion/bd.php")){
                 // En caso de existir lo solicita
                 require_once 'bd.php';
                 //instancia objeto PDO

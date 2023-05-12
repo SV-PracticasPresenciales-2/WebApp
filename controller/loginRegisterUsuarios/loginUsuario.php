@@ -6,7 +6,8 @@ if (!empty($_POST["login"])) {
     $usuario = $controlador->login($_POST["username"], $_POST["password"]);
     if (gettype($usuario) == "string") {
         $_SESSION["formdata"] = $_POST;
-        $_SESSION["mensajeregistrar"] = $usuario;
+        $_SESSION["mensa
+        jeregistrar"] = $usuario;
         header("Location:" . $_SERVER['PHP_SELF'] . "?errorLogin");
     } else {
         if ($usuario == null) {

@@ -6,6 +6,9 @@
 //preferible usar define
 const CONTROLLERS_FOLDER = 'controller/';
 
+const DEFAULT_CONTROLLER = 'post';
+
+const DEFAULT_ACTION = 'listPosts';
 
 //Obtenemos el controlador
 //si el usuario no lo introduce, seleccionamos el de por defecto
@@ -14,7 +17,8 @@ $controllerClass = DEFAULT_CONTROLLER . 'controller';
 if (!empty ($_GET['controller']))
     $controller = $_GET['controller'];
 
-//Ya tenemos el controlador y la accion
+
+//Ya tenemos el controlador y la accionz
 //Formamos el nombre del fichero que contiene nuestro controlador
 $controller = CONTROLLERS_FOLDER . $controller . 'controller.php';
 

@@ -1,11 +1,11 @@
 <?php
-require_once '../model/user.php';
+require_once '../model/users.php';
 
 class userController{
 
     private Sesion $sesion;
 
-    public function __construsct(){
+    public function __construct(){
         $this->sesion = new Sesion();
     }
 
@@ -38,31 +38,34 @@ class userController{
      *
      * userController.php
      *
-     * @param Object $usuario
-     * @param String $nombre_usuario
-     * @param String $contrasenia
+     * @param Object $user
+     * @param String $username
+     * @param String $password
      * @return Boolean
      */
-    public function login($nombre_usuario, $contrasenia){
-        return usuario::consigueUsuario($nombre_usuario, $contrasenia);
+    public function login($username, $password){
+        return user::getUsuario($username, $password);
     }
 
-    public function consigueNombre($idUsuario){
-        return usuario::consigueNombre($idUsuario);
+
+
+    public function getName($id){
+        return user::getName($id);
     }
 
-    public function cerrarSesion(){
-        $this->sesion->borrarSesion();
+    public function closeSesion(){
+        $this->sesion->deleteSesion();
     }
 }
 
 $campo = null;
 $validacion = true;
-$controlador = new usuarioController();
-if (isset($_GET["cerrarSesion"])) {
-    $controlador->cerrarSesion();
+$controlador = new userController();
+if (isset($_GET["closeSesion"])) {
+    $controlador->closeSesion();
 }
-if (!isset($_GET["postId"])) {
-    require_once("formularioUsuario/loginUsuario.php");
-    require_once("formularioUsuario/registrarUsuario.php");
-}
+
+
+
+
+

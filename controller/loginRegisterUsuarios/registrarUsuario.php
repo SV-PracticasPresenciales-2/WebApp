@@ -14,12 +14,12 @@ if(isset($_POST["registrar"])){
     }// end foreach
 
     if($validacion){
-        $respuesta = $controlador->registrar_usuario($_POST["nombre_usuario"],$_POST["contrasenia"],$_POST["nombre"],$_POST["apellidos"],$_POST["email"]);
+        $respuesta = $controlador->RegisterUser($_POST["username"],$_POST["password"],$_POST["name"],$_POST["biography"],$_POST["phone_number"]);
 
         //Si ya existe el alias o si ocurre un error al ejecutar la consulta vuelve a seccion registrar y muestra el mensaje.
         if(gettype($respuesta) == "string"){
             $_SESSION["formdata"] = $_POST;
-            $_SESSION["mensajeregistrar"] = $respuesta;
+            $_SESSION["registerMessage"] = $respuesta;
             echo $respuesta;
             // Si no ocurre ningun error...
         }else{
