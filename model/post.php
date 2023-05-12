@@ -125,5 +125,33 @@ class post
             return Conectar::mensajes($e->getCode());
         }
     }
+
+
+
+    public function getPostFromUser($id){
+        try {
+            $conexion = Conectar::Conexion();
+
+            if (gettype($conexion) == "string") {
+                return $conexion;
+            }
+
+            $sql = "SELECT * FROM POSTS WHERE post_user = :id";
+            $respuesta = $conexion->prepare($sql);
+            $respuesta->execute(array(':id' => $id));
+            $respuesta = $respuesta->fetchAll(PDO::FETCH_ASSOC);
+            $conexion = null;
+
+            if ($respuesta) {
+                return $respuesta;
+            } else {
+                return $respuesta = null;
+            }
+        } catch (PDOException $e) {
+            return Conectar::mensajes($e->getCode());
+        }
+
+
+    }
 }
 
