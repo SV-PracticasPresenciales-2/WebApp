@@ -1,19 +1,22 @@
 /* estilos para listado de posts */
-.container-sm {
-    max-width: 600px;
-    margin: auto;
-    background-color: #fff;
+.table, h4 {
     border: 1px solid #ccc;
     box-shadow: 1px 1px 1px #999;
     padding: 10px;
     border-radius: 10px;
+    background-color: bisque;
 
-
-    background-image: url("paper.jpg");
-    background-repeat: repeat ;
-    background-size: cover;
 }
+.container {
+    border: 1px solid #ccc;
+    box-shadow: 1px 1px 1px #999;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: bisque;
+    width: 80%;
+    margin-top: 2em;
 
+}
 body {
     background-image: url("wood.jpg");
     background-repeat: repeat;
@@ -21,11 +24,14 @@ body {
 }
 
 
-h3{
+h4 {
+    margin-top: 0.5em;
+    text-align: center;
     font-family: Garamond, Helvetica, sans-serif;
     font-size: xxx-large;
     font-weight: bolder;
 }
+
 .row {
     display: flex;
     justify-content: center;
@@ -44,6 +50,7 @@ h3{
     border-radius: 10px;
 }
 
+
 /* estilos para user details */
 .container-sm-details {
     max-width: 600px;
@@ -58,7 +65,7 @@ h3{
 .col {
     flex: 1;
     padding: 10px;
-    
+
 }
 
 .center {
