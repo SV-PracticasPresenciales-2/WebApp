@@ -6,7 +6,7 @@ class userController{
     private users $user;
 
     public function __construct(){
-       $this->user = new users(0, false, "", "", "", 0, "", "");
+        $this->user = new users(0, false, "", "", "", 0, "", "");
     }
 
     /**
@@ -27,10 +27,9 @@ class userController{
      * @return Boolean
      */
 
-    /*public function getName($id){
-        return user::getName($id);
+    public function getName($id){
+        return $this->user->getName($id);
     }
-    */
 
     public function getUserDetails($id){
         return $this->user->getUserDetails($id);

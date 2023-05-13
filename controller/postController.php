@@ -1,5 +1,6 @@
 <?php
-require_once 'model/post.php';
+require_once '../model/post.php';
+include_once '../controller/userController.php';
 
 
 class postController
@@ -12,16 +13,12 @@ class postController
 
     public function listPosts()
     {
-        $posts = $this->post->messages();
-        include 'view/listPosts.php';
+        return $this->post->messages();
+        //include '../view/listPosts.php';
         //return $posts;
     }
 
 }
-
-
-
-
-
-//$controller = new postController();
-//$posts = $controller->listPosts();
+$userController = new userController();
+$controller = new postController();
+$posts = $controller->listPosts();

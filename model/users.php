@@ -102,23 +102,23 @@ class users
     /**
      * @return string
      */
-  //  public function getRol(): string
-   // {
-  //      return $this->rol;
-  //  }
+    //  public function getRol(): string
+    // {
+    //      return $this->rol;
+    //  }
 //
-  //  /**
-  //   * @param string $rol
+    //  /**
+    //   * @param string $rol
 // /*    */
- //   public function setRol(string $rol): void
- //   {
-  //      $this->rol = $rol;
- //    }
+    //   public function setRol(string $rol): void
+    //   {
+    //      $this->rol = $rol;
+    //    }
 
- //   /**
- //    * @return string
+    //   /**
+    //    * @return string
 //     */
-    public static function getName($id){
+    public function getName($id){
         try {
             $conexion = Conectar::Conexion();
 
@@ -274,34 +274,34 @@ class users
     }
 
 
- /*
-    public static function getName($id){
-        try {
-            $conexion = Conectar::Conexion();
+    /*
+       public static function getName($id){
+           try {
+               $conexion = Conectar::Conexion();
 
-            if (gettype($conexion) == "string") {
-                return $conexion;
-            }
+               if (gettype($conexion) == "string") {
+                   return $conexion;
+               }
 
-            $sql = "SELECT username FROM USERS WHERE id = :user";
+               $sql = "SELECT username FROM USERS WHERE id = :user";
 
-            //$respuesta = $conexion->prepare("SELECT * FROM usuarios where nombre_usuario = '.$nombre_usuario' and contrasenia = '$contrasenia'");
-            $respuesta = $conexion->prepare($sql);
-            $respuesta->execute(array(':user' => $id));
-            $respuesta = $respuesta->fetch(PDO::FETCH_ASSOC);
+               //$respuesta = $conexion->prepare("SELECT * FROM usuarios where nombre_usuario = '.$nombre_usuario' and contrasenia = '$contrasenia'");
+               $respuesta = $conexion->prepare($sql);
+               $respuesta->execute(array(':user' => $id));
+               $respuesta = $respuesta->fetch(PDO::FETCH_ASSOC);
 
-            $conexion = null;
+               $conexion = null;
 
-            if ($respuesta) {
-                return $respuesta;
-            } else {
-                return null;
-            }
-        } catch (PDOException $e) {
-            return Conectar::mensajes($e->getCode());
-        }
-    }
-*/
+               if ($respuesta) {
+                   return $respuesta;
+               } else {
+                   return null;
+               }
+           } catch (PDOException $e) {
+               return Conectar::mensajes($e->getCode());
+           }
+       }
+   */
     public static function cryptconmd5($password)
     {
         //Crea un salt
